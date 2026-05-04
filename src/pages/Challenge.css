@@ -1,0 +1,102 @@
+.challenge-page { padding: 32px 24px 80px; }
+
+.challenge-header { margin-bottom: 32px; }
+
+.challenge-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.back-link {
+  font-size: 14px;
+  color: var(--text-muted);
+  transition: color var(--transition);
+}
+.back-link:hover { color: var(--text-primary); }
+
+.challenge-badges { display: flex; gap: 8px; align-items: center; }
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.badge-creator { background: rgba(255,215,0,0.15); border: 1px solid rgba(255,215,0,0.3); color: #ffd700; }
+.badge-saving { background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.3); color: var(--accent-light); animation: pulse 1s infinite; }
+
+.challenge-heading { font-size: clamp(22px, 4vw, 36px); font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
+
+.challenge-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
+
+.meta-item { font-size: 14px; color: var(--text-secondary); }
+
+.share-btn { font-size: 13px; padding: 8px 16px; margin-left: auto; }
+
+/* Tabs */
+.challenge-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 4px;
+  width: fit-content;
+}
+
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.tab-btn:hover { color: var(--text-primary); background: var(--bg-hover); }
+.tab-btn.active { background: var(--accent); color: #fff; font-weight: 600; }
+
+.tab-badge {
+  background: rgba(255,255,255,0.2);
+  border-radius: 10px;
+  padding: 2px 8px;
+  font-size: 12px;
+}
+
+.tab-btn.active .tab-badge { background: rgba(255,255,255,0.25); }
+
+/* Vote section */
+.vote-section { display: flex; flex-direction: column; gap: 16px; }
+
+.auth-prompt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: rgba(124,58,237,0.08);
+  border: 1px solid rgba(124,58,237,0.2);
+  border-radius: var(--radius);
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.drag-hint {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 8px;
+}

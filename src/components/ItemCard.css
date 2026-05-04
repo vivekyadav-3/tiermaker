@@ -1,0 +1,42 @@
+.item-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: grab;
+  user-select: none;
+  transition: all var(--transition);
+  min-width: 100px;
+  max-width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.item-card:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-light);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.item-card:active { cursor: grabbing; }
+
+.item-dragging {
+  box-shadow: 0 8px 24px rgba(124,58,237,0.4);
+  border-color: var(--accent);
+}
+
+.item-grip {
+  color: var(--text-muted);
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.item-title {
+  font-size: 13px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

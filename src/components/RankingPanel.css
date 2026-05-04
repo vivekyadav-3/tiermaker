@@ -1,0 +1,85 @@
+.ranking-panel { display: flex; flex-direction: column; gap: 20px; }
+
+.ranking-header {
+  display: flex;
+  gap: 24px;
+  padding: 20px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.ranking-stat { display: flex; flex-direction: column; gap: 4px; }
+.stat-num { font-size: 28px; font-weight: 800; font-family: 'Space Grotesk', sans-serif; }
+.stat-label { font-size: 12px; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+
+.ranking-list { display: flex; flex-direction: column; gap: 8px; }
+
+.ranking-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: all var(--transition);
+}
+
+.ranking-row:hover { background: var(--bg-hover); border-color: var(--border-light); }
+
+.rank-num {
+  width: 36px;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-align: center;
+  flex-shrink: 0;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.rank-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+
+.rank-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.rank-title { font-size: 15px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rank-score { font-size: 13px; color: var(--text-muted); white-space: nowrap; flex-shrink: 0; }
+
+.rank-bar-bg {
+  height: 6px;
+  background: var(--bg-hover);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.rank-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  border-radius: 3px;
+  transition: width 0.6s ease;
+}
+
+.tier-breakdown {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tier-pill {
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.empty-ranking {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
