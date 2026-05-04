@@ -45,7 +45,15 @@ export default function Challenge() {
   useEffect(() => {
     fetchAll()
     subscribeRealtime()
-    return () => { channelRef.current?.unsubscribe() }
+
+    // Polling fallback: refresh votes every 10s
+    // This ensures rankings stay fresh even if WebSocket drops (scale resilience)
+    const pollInterval = setInterval(() => fetchAll(), 10000)
+
+    return () => {
+      channelRef.current?.unsubscribe()
+      clearInterval(pollInterval)
+    }
   }, [id])
 
   async function fetchAll() {
