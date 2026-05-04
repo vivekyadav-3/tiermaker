@@ -32,6 +32,18 @@ export default function AuthPage() {
     setLoading(false)
   }
 
+  const handleGuestLogin = async () => {
+    try {
+      setLoading(true)
+      const { error } = await signInAnonymously()
+      if (error) throw error
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <div className="auth-page fade-in">
       <div className="auth-card">
@@ -79,7 +91,7 @@ export default function AuthPage() {
           <span>OR</span>
         </div>
 
-        <button className="btn btn-secondary guest-btn" onClick={() => signInAnonymously()} disabled={loading}>
+        <button className="btn btn-secondary guest-btn" onClick={handleGuestLogin} disabled={loading}>
           👤 Join as Guest (Instant)
         </button>
 
