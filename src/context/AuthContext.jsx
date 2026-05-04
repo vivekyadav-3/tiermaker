@@ -6,12 +6,26 @@ const AuthContext = createContext(null)
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [authError, setAuthError] = useState(null)
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null)
-      setLoading(false)
-    })
+    // Wrapped in try/catch: if Supabase is unreachable (e.g., network down),
+    // we gracefully treat the user as logged out instead of crashing the app.
+    supabase.auth.getSession()
+      .then(({ data: { session }, error }) => {
+        if (error) {
+          console.error('Session fetch failed:', error.message)
+          setAuthError(error.message)
+        }
+        setUser(session?.user ?? null)
+      })
+      .catch((err) => {
+        console.error('Unexpected auth error:', err)
+        setAuthError('Could not connect to authentication service.')
+      })
+      .finally(() => {
+        setLoading(false)
+      })
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null)
@@ -27,7 +41,7 @@ export function AuthProvider({ children }) {
   const signInAnonymously = () => supabase.auth.signInAnonymously()
 
   return (
-    <AuthContext.Provider value={{ user, loading, signUp, signIn, signOut, signInAnonymously }}>
+    <AuthContext.Provider value={{ user, loading, authError, signUp, signIn, signOut, signInAnonymously }}>
       {children}
     </AuthContext.Provider>
   )
