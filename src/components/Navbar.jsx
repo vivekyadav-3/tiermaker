@@ -28,12 +28,12 @@ export default function Navbar() {
                 + New Challenge
               </Link>
               <div className="user-menu">
-                <button className="user-avatar" onClick={() => setMenuOpen(!menuOpen)}>
-                  {user.email[0].toUpperCase()}
+                <button className="user-avatar" onClick={() => setMenuOpen(!menuOpen)} title={user.email || 'Guest'}>
+                  {user.email ? user.email[0].toUpperCase() : 'G'}
                 </button>
                 {menuOpen && (
                   <div className="user-dropdown">
-                    <div className="user-email">{user.email}</div>
+                    <div className="user-email">{user.email || 'Guest Session'}</div>
                     <button className="btn btn-ghost" onClick={handleSignOut} style={{ width: '100%', justifyContent: 'flex-start', color: '#ff4757' }}>
                       Sign Out
                     </button>

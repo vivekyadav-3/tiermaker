@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext'
 import './AuthPage.css'
 
 export default function AuthPage() {
-  const { user, signIn, signUp } = useAuth()
+  const { user, signIn, signUp, signInAnonymously } = useAuth()
   const navigate = useNavigate()
   const [mode, setMode] = useState('signin') // 'signin' | 'signup'
   const [email, setEmail] = useState('')
@@ -74,6 +74,14 @@ export default function AuthPage() {
             {loading ? <><div className="spinner" style={{ width: 16, height: 16, borderWidth: 2 }} /> Processing...</> : (mode === 'signin' ? 'Sign In' : 'Create Account')}
           </button>
         </form>
+
+        <div className="auth-divider">
+          <span>OR</span>
+        </div>
+
+        <button className="btn btn-secondary guest-btn" onClick={() => signInAnonymously()} disabled={loading}>
+          👤 Join as Guest (Instant)
+        </button>
 
         <div className="auth-switch">
           {mode === 'signin' ? (
